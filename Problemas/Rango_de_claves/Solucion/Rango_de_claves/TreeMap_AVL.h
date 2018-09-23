@@ -87,9 +87,16 @@ public:
       return inserta(cv, raiz);
    }
 
+
+/*=========================================================================================*/
+   //Operacion nueva que resuelve el ejercicio.
+   //Este metodo es el que se llama de forma interna, pero este llama a uno privado interno para pasarle el Link
+
    void rangoClaves(std::vector<int> &sol, int k1, int k2) {
 	   rangoClavesInterno(raiz, sol, k1, k2);
    }
+
+/*=========================================================================================*/
    
    bool empty() const {
       return raiz == nullptr;
@@ -129,6 +136,8 @@ public:
    
 protected:
 	
+/*========================Metodo que resuelve el ejercicio============================================*/
+
 	void rangoClavesInterno(Link &l, std::vector<int> &sol, int k1, int k2) {
 		if (l == nullptr) return;
 
@@ -145,7 +154,7 @@ protected:
 		}
 
 	}
-
+/*=====================================================================================================*/
 
 	void copia(map_t const& other) {
       raiz = copia(other.raiz);

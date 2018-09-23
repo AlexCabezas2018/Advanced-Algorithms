@@ -1,5 +1,5 @@
-// Nombre del alumno .....
-// Usuario del Juez ......
+// Alejandro Cabezas Garriguez
+// TAIS 26
 
 
 #include <iostream>
@@ -9,6 +9,13 @@
 #include "TreeMap_AVL.h"
 
 
+
+/*
+	Atencion!!
+	la solucion no está implementada como funcion externa a la clase, sino como una operación de la misma.
+	Esto quiere decir que la solucion se encuentra dentro del archivo TreeMap_AVL.h
+	Entra en dicho archivo y busca el metodo "randoClaves()".
+*/
 
 
 // Resuelve un caso de prueba, leyendo de la entrada la
