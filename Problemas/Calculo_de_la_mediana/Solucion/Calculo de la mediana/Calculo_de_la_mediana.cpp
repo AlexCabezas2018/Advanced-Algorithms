@@ -8,6 +8,7 @@
 #include "PriorityQueue.h"
 
 
+//Atencion: los "long int" pueden ser sustituidos perfectamente por "int". En este caso no son necesarios.
 
 // --- Coste de la operacion --- //
 // O(max(_numberOfDigits*log(_NQueue.size()), _numberOfDigits*log(_N1Queue.size()))
