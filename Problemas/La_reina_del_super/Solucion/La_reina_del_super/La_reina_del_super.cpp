@@ -1,5 +1,5 @@
 // Alejandro Cabezas Garriguez
-//TAIS26
+// TAIS26
 
 #include <iostream>
 #include <fstream>
@@ -20,9 +20,9 @@ typedef struct _Client {
 int resolve(PriorityQueue<_Client> &_CashRegs, std::istream &_Input, int N, int C) {
 
 	while (C--) {
+		int _Nextime;
 		_Client _aux = _CashRegs.top();
 		_CashRegs.pop();
-		int _Nextime;
 		_Input >> _Nextime;
 		_aux._time += _Nextime;
 		_CashRegs.push(_aux);
