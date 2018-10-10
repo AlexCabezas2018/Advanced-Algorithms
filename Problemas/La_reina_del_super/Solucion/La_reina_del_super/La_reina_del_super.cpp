@@ -8,7 +8,7 @@
 
 using namespace std;
 
-typedef struct _Client {
+struct _Client {
 	int _time = 0;
 	int _CashReg = -1;
 };
