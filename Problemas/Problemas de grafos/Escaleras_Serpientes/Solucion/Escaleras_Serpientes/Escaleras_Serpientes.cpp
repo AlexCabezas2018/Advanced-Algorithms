@@ -39,7 +39,7 @@ bool resuelveCaso() {
 	}
 
 
-	Solution sol(g, K);
+	Solution sol(g);
 	std::cout << sol.getSolution() << "\n";
 	// escribir sol
 
