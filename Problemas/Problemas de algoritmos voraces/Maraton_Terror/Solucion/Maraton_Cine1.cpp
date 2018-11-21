@@ -1,6 +1,8 @@
 // Alejandro Cabezas Garriguez
 // TAIS26
 
+//AUN NO ESTÁ TERMINADO TODO
+
 
 #include <iostream>
 #include <iomanip>
