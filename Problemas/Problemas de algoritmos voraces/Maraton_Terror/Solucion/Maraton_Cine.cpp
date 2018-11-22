@@ -1,7 +1,23 @@
 // Alejandro Cabezas Garriguez
 // TAIS26
 
-//AUN NO ESTÁ TERMINADO TODO
+/*
+    El problema consiste en encontrar el mayor numero de peliculas que la persona podrá visitar en un
+    dia. Para ello contamos con las horas a las que empieza y acaba. Tambien sabemos que, despues de acabar
+    la pelicula, deben trascurrir unos diez minutos que, segun el problema, es el tiempo que tarda la persona
+    en cambiar de sala, comprar palomitas... 
+    En esencia, debemos priorizar (ordenar) las peliculas que acaben antes y, para las que acaben a la misma hora, las que duren
+    menos (es decir, las que empiecen antes tambien). Esta es la estrategia que usaremos.
+    Para la implementacion, el problema es practicamente igual al anterior, el de "Primera linea de playa". Basta con elegir las
+    peliculas por orden de entrada (puesto que la entrada ha sido previamente ordenada) y averiguar si la siguiente pelicula
+    cumple con los requisistos que hemos impuestos (en este caso que no se solape y que ha pasado un tiempo minimo de 10 minutos entre
+    peliculas).
+
+    El coste de introduccion de los elementos en la cola de prioridad es del orden O(log N) donde N es el numero de peliculas.
+    El coste del algoritmo que resuelve el problema consiste en una iteracion completa de todos los elementos de una cola de prio-
+    ridad. Cada operacion de la cola es O(log N), y, como observamos todos los elementos, el coste total es O(N log N) con N explica-
+    do anteriormente.
+*/
 
 
 #include <iostream>
@@ -27,7 +43,7 @@ int resolver(std::priority_queue<Film, std::vector<Film>, std::greater<Film>> &f
     int ret = 1;
     int timeSpent = films.top().end;
     while(!films.empty()){
-        if(films.top().begin > timeSpent){
+        if(films.top().begin >= timeSpent){
             ret++;
             timeSpent = films.top().end;
         }
@@ -57,8 +73,9 @@ bool resuelveCaso() {
 
     for(int i = 0; i < filmsNumber; i++){
         int time = readHour(std::cin), value;
-        std::cin >> value;
-        films.push({time, time + value});
+        std::cin >> value; //Tiempo trascurrido (incio + value = final)
+        films.push({time, time + value + 10}); //Añadimos 10 minutos mas porque nos dicen que tarda 10 minutos en cambiar de sala...
+                                               //Esto lo interpretamos como que la pelicula "dura 10 minutos mas".
     }
 
     std::cout << resolver(films) << "\n";
