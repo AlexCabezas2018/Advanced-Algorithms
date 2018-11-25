@@ -1,9 +1,6 @@
 // Alejandro Cabezas Garriguez
 // TAIS26
 
-//AUN NO ESTÁ TERMINADO TODO
-
-
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -27,7 +24,7 @@ int resolver(std::priority_queue<Film, std::vector<Film>, std::greater<Film>> &f
     int ret = 1;
     int timeSpent = films.top().end;
     while(!films.empty()){
-        if(films.top().begin > timeSpent){
+        if(films.top().begin >= timeSpent){
             ret++;
             timeSpent = films.top().end;
         }
@@ -58,7 +55,7 @@ bool resuelveCaso() {
     for(int i = 0; i < filmsNumber; i++){
         int time = readHour(std::cin), value;
         std::cin >> value;
-        films.push({time, time + value});
+        films.push({time, time + value + 10});
     }
 
     std::cout << resolver(films) << "\n";
