@@ -30,18 +30,17 @@ bool esPosible(std::vector<Varilla> const &vars, const int N, const int L) { //C
 		varillas(i, j) = varillas(i - 1, j) si j < logitud(varilla[i])
 		varillas(i, j) = varillas(i - 1, j - longitud(varilla[i]) || varillas(i - 1, j) en otro caso
 	*/
-
-
 	std::vector<int> vector(L + 1, false);
 	vector[0] = true;
 
-    for(int i = 0; i < vars.size(); i++){
-        for(int j = L; j >= 1; j--){
-			if(j >= vars[i].longitud) vector[j] = vector[j] || vector[j - vars[i].longitud];
-        }
-    }
+	for(int i = 0; i < vars.size(); i++){
+		for(int j = L; i >= 1; j--){
+			if(j >= vars[i].longitud) vector[j] = vector[j] || vector[j - vars[i].longitud]; 
+		}
+	}
 
-    return vector[L];
+	return vector[L];
+
 }
 
 int posibles_maneras(std::vector<Varilla> const &vars, const int N, const int L){ //Coste: O(N * L) donde N son el numero de varillas, L la longitud a alcanzar
@@ -49,18 +48,15 @@ int posibles_maneras(std::vector<Varilla> const &vars, const int N, const int L)
 		varillas(i, j) = varillas(i - 1, j) si j < logitud(varilla[i])
 		varillas(i, j) = varillas(i - 1, j - longitud(varilla[i])) + varillas(i - 1, j) en otro caso
 	*/
-
-
 	std::vector<int> vector(L + 1, 0);
 	vector[0] = 1;
 
-    for(int i = 0; i < vars.size(); i++){
-        for(int j = L; j >= 1; j--){
-			if (vars[i].longitud <= j) vector[j] = vector[j] + vector[j - vars[i].longitud];
-        }
-    }
-
-    return vector[L];
+	for(int i = 0; i < vars.size(); i++){
+		for(int j = L; i >= 1; j--){
+			if(vars[i].longitud <= j) vector[j] = vector[j] + vector[j - vars[i].longitud];
+		}
+	}
+	return vector[L];
 }
 
 int minimo_varillas(std::vector<Varilla> const &vars, const int N, const int L) { //Coste: O(N * L) donde N son el numero de varillas, L la longitud a alcanzar
@@ -68,18 +64,16 @@ int minimo_varillas(std::vector<Varilla> const &vars, const int N, const int L) 
 	varillas(i, j) = varillas(i - 1, j) si j < logitud(varilla[i])
 	varillas(i, j) = min(varillas(i - 1, j - longitud(varilla[i]), varillas(i - 1, j) + 1) en otro caso
 	*/
-
 	const int INF = 1000000000;
 	std::vector<int> vector(L + 1, INF);
 	vector[0] = 0;
 
-	for (int i = 0; i < vars.size(); i++) {
-		for (int j = L; j >= 1; j--) {
+	for(int i = 0; i < vars.size(); i++){
+		for(int j = L; j >= 1; j--){
 			if(vars[i].longitud <= j) vector[j] = std::min(vector[j], 
-				vector[j - vars[i].longitud] + 1);
-		} 
+			vector[j - vars[i].longitud] + 1);
+		}
 	}
-
 	return vector[L];
 }
 
@@ -88,18 +82,16 @@ int minimo_coste(std::vector<Varilla> const &vars, const int N, const int L) { /
 	varillas(i, j) = varillas(i - 1, j) si j < logitud(varilla[i])
 	varillas(i, j) = min(varillas(i - 1, j - longitud(varilla[i]), varillas(i - 1, j) + precio(varilla[i]) en otro caso
 	*/
-
 	const int INF = 1000000000;
 	std::vector<int> vector(L + 1, INF);
 	vector[0] = 0;
 
-	for (int i = 0; i < vars.size(); i++) {
-		for (int j = L; j >= 1; j--) {
-			if (vars[i].longitud <= j) vector[j] = std::min(vector[j], 
-				vector[j - vars[i].longitud] + vars[i].precio);
+	for(int i = 0; i < vars.size(); i++){
+		for(int j = L; j >= 1; j--){
+			if(vars[i].longitud <= j) vector[j] = std::min(vector[j], 
+			vector[j - vars[i].longitud] + vars[i].precio);
 		}
 	}
-
 	return vector[L];
 }
 
@@ -122,11 +114,11 @@ bool resuelveCaso() {
     }
 
     if(esPosible(varillas, N, L)){
-        std::cout << "SI ";
-        std::cout << posibles_maneras(varillas, N, L) << " ";
+		std::cout << "SI ";
+		std::cout << posibles_maneras(varillas, N, L) << " ";
 		std::cout << minimo_varillas(varillas, N, L) << " ";
 		std::cout << minimo_coste(varillas, N, L) << "\n";
-    } 
+	}
 
     else std::cout << "NO\n";
     // escribir sol
