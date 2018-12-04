@@ -2,7 +2,20 @@
 // TAIS26
 
 
-//TODO aun no terminado
+/*
+    El problema consiste en encontrar el numero de amigos que son necesarios para cubrir todas las charlas que se
+    dan en la semana de la informatica.
+    Aplicaremos una estrategia voraz que nos asegure que siempre obtendremos una solucion optima.
+    En este caso, optaremos por ordenar las charlas o eventos por incio y aplicar el siguiente algoritmo:
+        -Miramos todos los evento, en primera instancia, nosotros vamos a la primera charla y observamos los demas
+        -Si el siguiente evento empieza entes de que yo acabe, entonces necesito un amigo.
+        -Si ya tenia amigos, entonces debo comprobar si algun amigo puede. Si puede algun amigo, entonces será aquel que
+        termine antes. Si aun asi, este no es capaz de ir, necesitamos otro amigo.
+
+    El coste de la operacion que resuelve el problema es el siguiente:
+        - Observamos todos los eventos y realizamos operaciones logaritmicas en cada iteracion
+        - Luego el coste final es del orden de O(N * log N) donde N es el numero de eventos.
+*/
 
 #include <iostream>
 #include <iomanip>
@@ -33,7 +46,7 @@ int resolver(const std::vector<Evento> &datos) {
         if(datos[i].beg >= porDondeVoyYo){
             porDondeVoyYo = datos[i].end;
         }
-        else if((porDondeVoyYo > datos[i].beg && porDondeVoyYo < datos[i].end)){ //necesito un amigo
+        else if(porDondeVoyYo >= datos[i].beg){ //necesito un amigo
             if(friendsQueue.empty()){
                 sol++;
                 friendsQueue.push(datos[i].end);
