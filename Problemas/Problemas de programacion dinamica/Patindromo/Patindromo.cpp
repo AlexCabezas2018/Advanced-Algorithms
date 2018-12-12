@@ -9,6 +9,35 @@
 #include <algorithm>
 #include <vector>
 
+/*
+	El problema nos pide que encontremos el palindromo mas largo dada una cadena. Como no podemos encontrar una estrategia
+	voraz que nos ayude a resolver el problema, necesitamos explorar todas las soluciones posibles. Decidimo aplicar entonces programacion
+	dinamica.
+
+	Determinamos una funcion patindromo(i , j) que indica la longitud maxima del palindromo de la subcadena de la palabra principal que va desde
+	i hasta j.
+
+	Por tanto, tenemos: 
+		patindromo(i, j) = 2 + patindromo(i + 1, j - 1) si p[i] == p[j] es decir, escgemos esos dos caracteres y se los sumamos a la longitud del palindromo interno
+		patindromo(i, j) = max(patindromo(i + 1, j), patindromo(i, j - 1)) si p[i] != p[j] Quiere decir que la subcadena que consideramos no es un palindromo, deberemos
+		considerar los casos en el que, o bien me quedo con una letra, o bien con otra, y quedarme con el maximo de los dos.
+
+	Los casos base seria:
+		patindromo(i, 0) = 0
+		patindrom(0, j) = 0 Ambos son palindromos, pero es la cadena vacia, de tamaño 0
+
+		patindromo(i, j) = 1 si i == j un caracter es palidromo de si mismo, y tiene como longitud 1
+
+	La llamada incial seria patindromo(1, palabra.size())
+
+	Dicho esto, resolveremos el problema creando una matriz de resultados, y explorando dicha matriz por diagonales
+	El coste de la resolucion del por problema es O(N * N + longMaxPalndromo) donde N es el tamaño de la matriz
+	y longMaxPalidromo es la longitud del palindromo máximo
+	El coste en espacio adicional seria o(N * N + longMaxPalindromo) puesto que tenemos que crear la matriz, y ademas la necesitamos para
+	recuperar la solucion. Tambien se crea un string vacio del tamaño de longMaxPalindromo, que es el que devolvemos.
+*/
+
+
 // función que resuelve el problema
 std::string patindromo(const std::string &word) {
 	int N = word.size() - 1;
@@ -82,10 +111,6 @@ bool resuelveCaso() {
 		sol = patindromo(word);
 		std::cout << sol << "\n";
 	}
-
-
-    
-	//std::cout << patindromo(word) << "\n";
     
     // escribir sol
     
@@ -110,7 +135,7 @@ int main() {
     // Para restablecer entrada. Comentar para acepta el reto
      #ifndef DOMJUDGE // para dejar todo como estaba al principio
      std::cin.rdbuf(cinbuf);
-     system("PAUSE");
+     //system("PAUSE");
      #endif
     
     return 0;
