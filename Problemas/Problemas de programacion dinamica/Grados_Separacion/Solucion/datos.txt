@@ -1,0 +1,8 @@
+4 4
+Marta Mario
+Mario Roberto
+Roberto Raquel
+Mario Raquel
+4 2
+Roberto Mario
+Marta Raquel
