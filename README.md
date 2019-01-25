@@ -1,4 +1,4 @@
-# Algoritmia
+# Advanced Algorithms
 Some advanced algorithms problems from the subject TAIS imparted in the Complutense University of Madrid
 
 ## Before starting:
