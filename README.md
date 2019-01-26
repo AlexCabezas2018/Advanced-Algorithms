@@ -1,10 +1,9 @@
-# Algoritmia
-Algunos problemas resueltos de la asignatura de Técnicas Algorítmicas de la Ingeniería del Software (TAIS)
+# Advanced Algorithms
+Some advanced algorithms problems from the subject TAIS imparted in the Complutense University of Madrid
 
-## Atención:
-Los problemas están divididos en un .pdf donde se encuentra el problema y una carpeta que contiene la solucion.
-Dentro de la carpeta, debes ir (en caso de que la solucion no sea una modificacion de la implementación del TAD)
-al archivo "nombre-del-problema.cpp". Si la solucion es una modificacion del TAD, entonces deberás dirigirte a el header (.h) del TAD y buscar el método rodeado por una caja de comentarios. Por último, si el problema en cuestión consiste en grafos, deberás dirigirte al archivo "Solution.h" dentro de la carpeta solucion. El main de esos problemas solo consiste en leer el grafo y mostrar la solución.
-
-## Nota:
-Si has entrado aquí porque quieres tener más problemas correctos que el resto y no quieres aprender, sientete libre de hacer lo que quieras, pero te recomiendo que antes de mirar la solución procures sacar tú tus propias conclusiones y, una vez no tengas más ideas, acudir con desesperación a este respositorio. Mi intención subiendo estos problemas es ayudar a esa gente que se esfuerza cada día por aprender y sacar la asignatura (por qué no decirlo). 
+## Before starting:
+A problem is divided in a .pdf file (which contains the problem itself) and a folder with the solution.
+Inside this folder, you have to go (if the solution is not an ADT modification of the implementation) to the file "name-of-the-problem.cpp"
+If the solution is an ADT modification of the implementation, then you have to go to the ADT header and find
+the function or code inside a comment box. Finally, if the problem consists in graphs, you should go to
+de "Solution.h" file inside the solution folder.
